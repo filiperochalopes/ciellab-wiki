@@ -64,3 +64,16 @@ The resulting evidence map and editorial policy are recorded in
 [Evidence and provenance](docs/reference/evidence.md). Private Slack
 permalinks, credentials, personal data, and raw transcripts are intentionally
 not published.
+
+## Incremental documentation updates
+
+The reviewed code state is pinned in
+[source-baseline.yml](source-baseline.yml). The generated footer and
+[Source baseline](docs/reference/source-baseline.md) page expose the abbreviated
+and full commits.
+
+To report code changes after the stored baseline:
+
+```bash
+.venv/bin/python scripts/source_baseline.py report
+```

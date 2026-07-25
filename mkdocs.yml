@@ -113,5 +113,6 @@ nav:
   - Operations:
       - GitHub Pages and R2: deployment/github-pages.md
       - Media library: reference/media-library.md
+      - Source baseline: reference/source-baseline.md
       - Evidence and provenance: reference/evidence.md
       - Writing guide: contributing/writing-guide.md

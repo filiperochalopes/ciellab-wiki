@@ -1,0 +1,39 @@
+schema_version: 1
+captured_at: "2026-07-25T12:51:02Z"
+
+sources:
+  ciel_lab_v2:
+    name: CIEL Lab v2
+    repository: https://github.com/filiperochalopes/ciel-lab-v2
+    branch: feature/release-pipeline-notifications
+    commit: 9341a28202cddaf647ddff9236177c863abae55f
+    commit_date: "2026-07-20T15:04:42-03:00"
+    working_tree:
+      dirty: true
+      changed_path_count: 28
+      untracked_path_count: 0
+      tracked_diff_sha256: 9d5f71c49e6dee0fe48e566758f3c8bf4d19e3680321ad76695dff6c97f0870e
+      untracked_content_sha256: null
+    note: Documentation also considered the inspected local changes present at capture time.
+
+  ciel_scripts:
+    name: CIEL scripts
+    repository: https://github.com/filiperochalopes/ciel-scripts
+    branch: main
+    commit: 86e95b35f7cd0fd21632173160bb4e90272be3d8
+    commit_date: "2026-07-19T10:54:51-03:00"
+    working_tree:
+      dirty: true
+      changed_path_count: 2
+      untracked_path_count: 1
+      tracked_diff_sha256: ce0575cc6ed9b6153bb04ffdf86b93aa8523bca3322b9354384224a45f5b98a5
+      untracked_content_sha256: 1615dab86c9c586ee7e9e3864d508ad2cf1c0d90c75d2fd70d3ada0c73b14377
+    note: Documentation also considered the modified README and the untracked Liquibase Runner upload script.
+
+reviewed_evidence:
+  slack:
+    scope: Private CIEL Lab conversation with Andrew
+    reviewed_through: "2026-07-24"
+  github_issue:
+    url: https://github.com/OpenConceptLab/ocl_issues/issues/2609
+    reviewed_through: "2026-07-24"

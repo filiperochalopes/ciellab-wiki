@@ -59,6 +59,25 @@ Cause, evidence, and safe recovery.
 5. Add a public issue link when it improves traceability.
 6. Record a new limitation when evidence is incomplete.
 
+## Incremental source review
+
+Before updating code-derived documentation:
+
+```bash
+.venv/bin/python scripts/source_baseline.py report
+```
+
+Review commits, changed paths, and local changes after the stored baseline.
+Update the affected pages, validate the site, and only then capture the new
+reviewed state:
+
+```bash
+.venv/bin/python scripts/source_baseline.py capture --confirm-reviewed
+```
+
+The capture refuses dirty codebases unless `--allow-dirty` is explicit. See
+[Source baseline](../reference/source-baseline.md) for the complete policy.
+
 ## Preview and test
 
 ```bash
@@ -74,4 +93,3 @@ to type. Confirm that headings and captions return useful results.
 Commit small reviewed screenshots under `docs/assets/screenshots/`. Keep raw and
 large media under `_private/`, which is ignored. Publish reviewed videos to R2
 through `scripts/sync-media.sh`.
-
