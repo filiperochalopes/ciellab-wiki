@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update CIEL Lab Wiki"
+  short_description: "Incrementally refresh the CIEL Lab wiki"
+  default_prompt: "Use $update-ciellab-wiki to review changes since the stored baseline and update the CIEL Lab documentation safely."
