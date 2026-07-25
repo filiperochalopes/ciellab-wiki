@@ -1,0 +1,55 @@
+:root {
+  --ciellab-video-max-width: 960px;
+}
+
+.ciellab-hero {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.6rem;
+  padding: 1rem 1.2rem;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--md-primary-fg-color) 14%, transparent), transparent 65%);
+}
+
+.ciellab-flow {
+  overflow-x: auto;
+}
+
+.ciellab-video {
+  display: block;
+  width: 100%;
+  max-width: var(--ciellab-video-max-width);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  background: #000;
+}
+
+.ciellab-video-wrapper {
+  max-width: var(--ciellab-video-max-width);
+}
+
+.ciellab-video-unconfigured .ciellab-video {
+  display: none;
+}
+
+.ciellab-video-error {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--md-accent-fg-color) 45%, transparent);
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--md-accent-fg-color) 8%, transparent);
+}
+
+.ciellab-screenshot {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.3rem 1rem rgb(0 0 0 / 12%);
+}
+
+.md-typeset .status-chip {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--md-primary-fg-color) 16%, transparent);
+}

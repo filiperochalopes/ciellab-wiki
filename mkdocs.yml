@@ -1,0 +1,117 @@
+site_name: CIEL Lab Wiki
+site_description: Product, workflow, QA, release, and operations documentation for CIEL Lab
+site_url: !ENV [SITE_URL, "https://openconceptlab.github.io/ciellab-wiki/"]
+repo_url: https://github.com/OpenConceptLab/ocl_issues/issues/2609
+repo_name: Documentation ticket
+edit_uri: ""
+docs_dir: docs
+site_dir: site
+strict: true
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Use light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Use dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Follow system preference
+
+plugins:
+  - search:
+      lang: en
+      separator: '[\s\-\.]+'
+  - tags
+
+hooks:
+  - hooks/env.py
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/mermaid.mjs
+  - assets/javascripts/media-fallback.js
+
+nav:
+  - Home: index.md
+  - Get started:
+      - First session: getting-started/first-session.md
+      - Product tour: getting-started/product-tour.md
+  - Architecture:
+      - System overview: architecture/overview.md
+  - Features:
+      - Dashboard: features/dashboard.md
+      - Quality assurance:
+          - QA overview: features/quality-assurance/overview.md
+          - Required class mappings: features/quality-assurance/required-class-mappings.md
+          - Retired codes: features/quality-assurance/retired-codes.md
+          - Display issues: features/quality-assurance/display-issues.md
+          - Bulk validation: features/quality-assurance/bulk-validation.md
+      - Tools:
+          - Concept Manager: features/tools/concept-manager.md
+          - Code Search: features/tools/code-search.md
+          - Translation: features/tools/translation.md
+      - Release workflow: features/release-workflow.md
+      - MCP App: features/mcp-app.md
+      - Settings and access: features/settings.md
+  - CIEL scripts:
+      - Overview: ciel-scripts/index.md
+      - Terminology loaders: ciel-scripts/loaders.md
+      - OCL workflows: ciel-scripts/ocl-workflows.md
+      - QA and release assets: ciel-scripts/qa-and-release.md
+  - Troubleshooting:
+      - Common questions: troubleshooting/common-questions.md
+      - Resolved problems: troubleshooting/resolved-problems.md
+      - Known limitations: troubleshooting/known-limitations.md
+  - Operations:
+      - GitHub Pages and R2: deployment/github-pages.md
+      - Media library: reference/media-library.md
+      - Evidence and provenance: reference/evidence.md
+      - Writing guide: contributing/writing-guide.md
