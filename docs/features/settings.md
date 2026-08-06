@@ -9,6 +9,18 @@ Choose a default search mode and CIEL version. Enable semantic suggestions when
 discovery is more important than exact matching; use textual or exact-code mode
 for reproducible lookups.
 
+## Release pipeline updates
+
+In **Release pipeline updates**, select **Enable notifications** to receive a
+browser notification for each completed release-pipeline stage. The choice is
+per browser and per site, not per release. It continues to work while CIEL Lab
+is closed when the browser and its service worker can receive push messages.
+
+Use **Turn off** to remove that browser subscription. A denied browser
+permission must be changed in the browser's site settings before the feature
+can be enabled again. The release page remains the source of truth for job
+status and errors.
+
 ## Personal OCL token
 
 CIEL Lab stores each user's OCL token encrypted and uses it for authorized OCL

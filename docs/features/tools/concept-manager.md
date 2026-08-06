@@ -57,6 +57,38 @@ legitimate structural starting point. Before saving a copy:
 - verify class and datatype;
 - make sure the concept is not already present under a synonym.
 
+## Merge a duplicate concept
+
+Use **Merge concept** only when two active CIEL concepts represent the same
+meaning and one must become the surviving record. The concept currently open is
+the one that will be retired; select the concept to keep with care. This action
+uses your personal OCL token, so configure it in **Settings** first.
+
+1. Open the duplicate concept and select **Merge concept**.
+2. In **Concept to keep**, search for and select the active surviving concept.
+3. Review the preview. It identifies the concept to be retired, the concept to
+   be kept, active names that will be copied as synonyms, duplicates that will
+   be skipped, and the `REPLACED BY` relationship to be created.
+4. Select **Merge concept** to queue the operation. Keep the dialog open until
+   the result is reported.
+5. Search for both identifiers again. Verify that the source is retired with
+   the reason `Dupe of <target ID>`, that the target remains active, and that
+   the `REPLACED BY` mapping points from source to target.
+
+The operation never overwrites names already on the target. Active source names
+not already present are copied as non-preferred synonyms; fully specified names
+are also converted to synonyms. A source that is already retired, a retired
+target, an existing equivalent `REPLACED BY` mapping, or a concurrent merge is
+rejected before the background job begins.
+
+### Recover from a failed merge
+
+Do not retry immediately. Inspect the job result and the current OCL state for
+both concepts. If a later write fails, CIEL Lab compensates completed writes
+where possible. A `rollback_failed` result means that manual review is required
+before any further merge attempt. In particular, preserve the error details and
+confirm names, mappings, and retirement state in OCL before proceeding.
+
 ## Worklists and bulk edits
 
 Worklists group concepts that require review and preserve progress while HEAD

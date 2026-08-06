@@ -38,6 +38,8 @@ redact if necessary, and run `./scripts/sync-media.sh`.
 The initial reviewed screenshots are versioned because they are small:
 
 - Required Class Mappings;
+- Mapping-candidate CSV import and IMO Procedures review (six WebP screenshots
+  from [issue #2608](https://github.com/OpenConceptLab/ocl_issues/issues/2608));
 - Release workflow;
 - Concept Manager.
 

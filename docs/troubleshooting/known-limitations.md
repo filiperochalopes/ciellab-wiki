@@ -40,6 +40,14 @@ one-to-many change.
 
 Mitigation: keep the finding open and perform manual terminology review.
 
+## Concept merge compensation
+
+A merge spans several OCL writes, so it cannot be made atomic across requests.
+CIEL Lab compensates completed writes when a later step fails, but compensation
+can also fail. A `rollback_failed` job requires manual OCL review; do not retry
+the merge until the source and target names, mapping, and retirement state are
+known.
+
 ## MCP scope
 
 The MCP experience is intentionally preview-first. It cannot remove human

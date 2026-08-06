@@ -53,6 +53,26 @@ Background tasks can produce:
 Artifact generation can outlive the browser request. Use task state and the
 artifact record instead of assuming a closed browser canceled the job.
 
+## Track the release pipeline
+
+After a release begins, the page shows a stepper for the tracked job. Each
+stage is marked pending, running, successful, or failed, and completed stages
+can link to their recorded workflow run. This is the authoritative progress
+view for the release; browser notifications are supplementary.
+
+Enable them in **Settings** > **Release pipeline updates**. Select **Enable
+notifications** and allow the browser permission prompt. When enabled, the
+browser can notify you as each release stage completes even if the Release page
+is closed. Use **Turn off** to remove the current browser subscription. If the
+browser blocks notifications, change its site permission and enable the setting
+again; unsupported browsers and environments without push configuration cannot
+subscribe.
+
+For generated SQL artifacts, wait for the status to become ready before using
+**Download SQL**. If generation fails, preserve the error, confirm the release
+version and upstream job state, then use **Retry** only after the cause is
+understood. Administrators control SQL artifact generation.
+
 ## Failure recovery
 
 If the release job fails:
@@ -65,4 +85,3 @@ If the release job fails:
 
 Release operations are intentionally conservative. A clean diff and current QA
 report are more valuable than speed.
-

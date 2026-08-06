@@ -49,6 +49,8 @@ private messages or private Slack permalinks.
 ## Topics promoted into documentation
 
 - Required Class Mapping filter semantics and partial review;
+- CSV mapping-candidate import, Concept ID and Map ID identity checks, and the
+  IMO Procedures review workflow;
 - retired codes without a native replacement;
 - reports versus durable worklists;
 - immediate validation versus Bulk Validation;
@@ -64,6 +66,7 @@ private messages or private Slack permalinks.
 - [#2401 — QA rule work referenced by the implementation](https://github.com/OpenConceptLab/ocl_issues/issues/2401)
 - [#2389 — semantic matching and specificity](https://github.com/OpenConceptLab/ocl_issues/issues/2389)
 - [#2535 — CIEL HEAD/MCP cache behavior](https://github.com/OpenConceptLab/ocl_issues/issues/2535)
+- [#2608 — IMO procedure mapping workflow](https://github.com/OpenConceptLab/ocl_issues/issues/2608)
 
 ## Exclusion policy
 

@@ -53,6 +53,23 @@ API routes where appropriate. Nginx presents the web application, API, and MCP
 surfaces under one deployment. MySQL stores durable application state:
 accounts, reports, worklists, and release records.
 
+## API entry points
+
+- **GraphQL playground:** [https://ciellab.filipelopes.med.br/graphql](https://ciellab.filipelopes.med.br/graphql)
+- **REST OpenAPI documentation:** [https://ciellab.filipelopes.med.br/api/v2/docs](https://ciellab.filipelopes.med.br/api/v2/docs)
+
+### OCL proxy
+
+The REST API includes an OCL proxy for browser-initiated OCL requests. It
+exists so that an OCL token is never placed in the browser bundle: the user
+authenticates to CIEL Lab with their session JWT, and the server retrieves that
+user's encrypted OCL token, adds it to the request, and forwards the request
+only to the configured OCL API. This preserves each user's OCL permissions,
+prevents arbitrary-host forwarding, and keeps the plaintext token server-side.
+
+For CIEL concept writes, the proxy also records an audit trail and keeps the
+HEAD cache and vector index synchronized after a successful upstream response.
+
 OCL is authoritative for terminology content. CIEL Lab does not make Qdrant or
 Valkey authoritative. It uses them as optimized projections:
 
