@@ -21,12 +21,21 @@ immediate validation; a bulk run is intentionally heavier.
 2. Start validation.
 3. Leave the page if needed; Celery runs the job in the background.
 4. Return when the status is complete.
-5. Filter by rule, severity, concept class, or terminology.
+5. Filter by rule, severity, concept class, terminology system, or other
+   available facets.
 6. Download the report or select findings.
 7. Save selected findings as a worklist.
 
 The interface evolved from raw JSON output into persisted reports with filters,
 downloads, and worklist creation. Prefer the structured UI for routine review.
+
+### Narrow mapping findings by terminology system
+
+When the current report contains mapping-based failures, the **Terminology
+system** facet is available. Select one or more sources to isolate findings for
+that terminology; source matching is case-insensitive, so variants in source
+capitalization remain together. The same selection is retained in a filtered
+CSV download and in a worklist created from the report.
 
 ## Rule catalog
 
@@ -50,6 +59,12 @@ right unit for:
 - using the MCP App to prepare a preview;
 - separating approved changes from unresolved findings.
 
+Opening an individual cross-concept finding can create a **Temporary worklist**
+in Concept Manager. It contains the finding's concept and the related concepts
+needed to compare or merge it. This browser-session worklist is not saved in
+the worklist picker; create a normal worklist when the review must persist or
+be resumed later.
+
 ## Recover from a cache reset
 
 If a report suddenly fails or returns implausibly few results after a service
@@ -67,4 +82,3 @@ restart:
 The Release page expects a completed HEAD report with zero errors from the last
 24 hours. Run Bulk Validation after the final change set and before creating
 the release.
-

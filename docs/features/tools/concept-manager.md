@@ -89,11 +89,21 @@ where possible. A `rollback_failed` result means that manual review is required
 before any further merge attempt. In particular, preserve the error details and
 confirm names, mappings, and retirement state in OCL before proceeding.
 
+If OCL rejects every name that the merge would copy, CIEL Lab aborts before
+creating the `REPLACED BY` mapping or retiring the source. Correct the rejected
+names or choose a suitable target, then create a new preview. A single rejected
+name can be skipped only when other planned copied names succeed.
+
 ## Worklists and bulk edits
 
 Worklists group concepts that require review and preserve progress while HEAD
 changes. A worklist can feed a bulk-edit preview, but every proposed mutation
 still requires human review and authorization.
+
+For a QA finding that relates multiple concepts, opening the finding can load a
+temporary worklist containing all related concepts. Use it to compare entries
+or preselect a merge target; it is local to the current browser session and is
+not a saved worklist.
 
 ## Short demonstrations
 

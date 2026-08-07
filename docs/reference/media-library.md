@@ -11,9 +11,11 @@ filename, a page that explains why it matters, and a reviewed R2 object.
 | `videos/2026-01-15-concept-search-after-save.webm` | Retrieval after a save |
 | `videos/2026-02-06-code-matching-comparison.webm` | Code Search comparison |
 
-These three files are available locally under the Git-ignored
-`_private/slack-videos/` directory and are referenced by the feature pages.
-They become playable after the R2 sync and `R2_PUBLIC_BASE_URL` configuration.
+These three files remain available locally under the Git-ignored
+`_private/slack-videos/` directory, have been uploaded to the reviewed R2
+`videos/` prefix, and are referenced by the feature pages. They become playable
+on the deployed wiki once its `R2_PUBLIC_BASE_URL` GitHub Actions variable is
+configured to the bucket's public origin.
 
 ## Pending source recordings
 

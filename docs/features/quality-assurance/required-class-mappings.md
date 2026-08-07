@@ -126,6 +126,21 @@ Candidate suggestions are aids, not authoritative replacements. If the desired
 target does not appear, use [Code Search](../tools/code-search.md) and enter a
 manually verified mapping.
 
+### Focus the review on imported candidates
+
+After selecting the target source or sources, use **Show only concepts that
+have candidates** to limit results to imported suggestions. Use **Show only
+concepts with unaccepted candidates** to find rows where at least one imported
+candidate is not among the concept's current mapping codes. If the reviewer
+must replace an existing mapping, also select **Show concepts even if they
+already have mappings**.
+
+An imported candidate is shown ahead of semantic suggestions. A yellow **+**
+button means that its code conflicts with the current mapping for that source;
+open the suggestions, compare the code and relationship, and select **Approve
+suggestion** only after authoritative terminology review. Approving a
+suggestion does not bypass the final OCL mapping save.
+
 ## Read mapping status correctly
 
 The page distinguishes a missing required mapping from other mappings that are

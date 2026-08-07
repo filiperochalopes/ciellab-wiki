@@ -115,7 +115,12 @@ size, and status.
 
 Version only reviewed, public-safe screenshots under
 `docs/assets/screenshots/`. Upload reviewed videos to R2 only when credentials
-and authorization are available.
+and authorization are available. Use `scripts/sync-media.sh` from the wiki
+root with the ignored local `.env` containing `CLOUDFLARE_ACCOUNT_ID`,
+`R2_BUCKET`, `R2_ACCESS_KEY_ID`, and `R2_SECRET_ACCESS_KEY`. The S3
+credentials stay local; only the non-secret `R2_PUBLIC_BASE_URL` belongs in
+GitHub Actions repository variables. Verify each uploaded public URL before
+claiming that a video is available.
 
 If a file cannot be downloaded or uploaded:
 
@@ -164,4 +169,3 @@ Report:
 
 Do not commit, push, deploy, upload media, or mutate external systems unless the
 user requested that action.
-

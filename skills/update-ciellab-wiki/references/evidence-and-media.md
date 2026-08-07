@@ -63,7 +63,12 @@ the handoff.
 5. Keep videos out of Git and sync reviewed files to R2.
 6. Add captions and transcripts for searchable knowledge.
 
+For an authorized R2 upload, run `scripts/sync-media.sh` with the S3-compatible
+R2 credentials in the ignored local `.env`; do not add them to GitHub Actions.
+Set the public origin through the non-secret `R2_PUBLIC_BASE_URL` repository
+variable, then confirm that every documented `videos/<filename>` URL returns a
+successful public response.
+
 For connector size limits or authenticated-download failures, record
 `pending_authenticated_download` or another precise status. Do not fabricate a
 local file, public URL, transcript, or successful upload.
-
