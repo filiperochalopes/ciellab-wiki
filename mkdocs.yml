@@ -16,6 +16,8 @@ theme:
     - navigation.sections
     - navigation.top
     - navigation.tracking
+    - toc.integrate
+    - toc.follow
     - search.suggest
     - search.highlight
     - search.share
