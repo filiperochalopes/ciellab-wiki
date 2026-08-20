@@ -20,6 +20,7 @@ BASELINE_PATH = ROOT / "source-baseline.yml"
 DEFAULT_REPOSITORIES = {
     "ciel_lab_v2": ROOT.parent / "ciel-lab-v2",
     "ciel_scripts": ROOT.parent / "ciel-scripts",
+    "ocl_skills": ROOT.parent / "ocl-skills",
 }
 
 
@@ -53,6 +54,9 @@ def repository_paths() -> dict[str, Path]:
         ).expanduser(),
         "ciel_scripts": Path(
             os.getenv("CIEL_SCRIPTS_PATH", DEFAULT_REPOSITORIES["ciel_scripts"])
+        ).expanduser(),
+        "ocl_skills": Path(
+            os.getenv("OCL_SKILLS_PATH", DEFAULT_REPOSITORIES["ocl_skills"])
         ).expanduser(),
     }
 

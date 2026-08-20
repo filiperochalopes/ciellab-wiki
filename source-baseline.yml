@@ -27,6 +27,19 @@ sources:
       tracked_diff_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       untracked_content_sha256: null
     note: Documentation was reviewed against a clean working tree.
+  ocl_skills:
+    name: OCL skills
+    repository: https://github.com/filiperochalopes/ocl-skills
+    branch: main
+    commit: d4308b00c8b779c1228e3c8f01c43979abd69275
+    commit_date: '2026-08-20T16:45:52-03:00'
+    working_tree:
+      dirty: false
+      changed_path_count: 0
+      untracked_path_count: 0
+      tracked_diff_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      untracked_content_sha256: null
+    note: Documentation was reviewed against a clean working tree.
 reviewed_evidence:
   slack:
     scope: Private CIEL Lab conversation with Andrew
@@ -34,3 +47,6 @@ reviewed_evidence:
   github_issue:
     url: https://github.com/OpenConceptLab/ocl_issues/issues/2609
     reviewed_through: '2026-08-06'
+  ocl_skills_issue:
+    url: https://github.com/OpenConceptLab/ocl_issues/issues/2680
+    reviewed_through: '2026-08-20'

@@ -41,6 +41,17 @@ supported.
   presentation changes; source values come from `source-baseline.yml`.
 - Add new pages to `mkdocs.yml`.
 
+## OCL support skills
+
+| Changed behavior | Primary documentation |
+| --- | --- |
+| OCL support-skill catalog, installation, review gate, or use prompt | `docs/ocl-skills/index.md` |
+| A skill's CIEL-specific input, validation, or artifact behavior | `docs/ocl-skills/index.md`, with a link to its repository source |
+
+Treat `ocl-skills/README.md` as the canonical catalog. Explain support skills
+as reviewable artifact generators: they must not be presented as automated OCL
+writers when their own contract requires manual upload or approval.
+
 ## Writing contract
 
 - Use English.
@@ -51,4 +62,3 @@ supported.
 - Explain both normal verification and failure recovery.
 - Link public GitHub issues near supported claims.
 - Do not duplicate a full explanation across pages; link to the canonical one.
-

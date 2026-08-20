@@ -28,6 +28,8 @@ The initial pages were derived from:
 - deployment definitions for MySQL, Valkey, Qdrant, workers, Nginx, and
   S3-compatible artifacts;
 - the canonical `ciel-scripts/README.md` and the scripts it indexes.
+- the canonical [`ocl-skills` README](https://github.com/filiperochalopes/ocl-skills)
+  and the versioned skill contracts, schemas, validation, and examples it indexes.
 
 When this wiki and the code disagree, verify the deployed version and update
 the documentation in the same change as the behavior.
@@ -67,6 +69,7 @@ private messages or private Slack permalinks.
 - [#2389 — semantic matching and specificity](https://github.com/OpenConceptLab/ocl_issues/issues/2389)
 - [#2535 — CIEL HEAD/MCP cache behavior](https://github.com/OpenConceptLab/ocl_issues/issues/2535)
 - [#2608 — IMO procedure mapping workflow](https://github.com/OpenConceptLab/ocl_issues/issues/2608)
+- [#2680 — clinical attribute and OCL support-skill installation](https://github.com/OpenConceptLab/ocl_issues/issues/2680)
 
 ## Exclusion policy
 

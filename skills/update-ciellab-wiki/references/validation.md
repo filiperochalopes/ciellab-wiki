@@ -31,7 +31,7 @@ Run from the wiki root.
    - required search terms appear in `site/search/search_index.json`;
    - `_private/`, `.env`, and `site/` remain ignored.
 
-5. Inspect `git status` in the wiki and both evidence repositories. Confirm the
+5. Inspect `git status` in the wiki and all three evidence repositories. Confirm the
    wiki update did not modify either evidence repository.
 
 ## When video markup changes
@@ -66,4 +66,3 @@ After capture:
 3. review the `source-baseline.yml` diff;
 4. ensure evidence review-through dates were not advanced beyond actual
    coverage.
-

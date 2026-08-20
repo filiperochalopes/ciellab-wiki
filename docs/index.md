@@ -25,6 +25,7 @@ threads, and Slack conversations.
 | Prepare a release | [Release workflow](features/release-workflow.md) |
 | Use CIEL Lab from an AI client | [MCP App](features/mcp-app.md) |
 | Operate terminology loaders and exports | [CIEL scripts](ciel-scripts/index.md) |
+| Prepare a reviewable OCL concept-import artifact | [OCL support skills](ocl-skills/index.md) |
 
 ## Search is local and complete
 
@@ -58,4 +59,3 @@ See the [system infographic](architecture/overview.md) for the full data flow.
     This is operational guidance, not a replacement for OCL authorization or
     release governance. Features that mutate OCL require a user-specific OCL
     API token and the appropriate permission.
-

@@ -40,6 +40,7 @@ def on_config(config: dict[str, object]) -> dict[str, object]:
     baseline = _load_baseline()
     ciel_lab = _source(baseline, "ciel_lab_v2")
     ciel_scripts = _source(baseline, "ciel_scripts")
+    ocl_skills = _source(baseline, "ocl_skills")
     site_url = str(config["site_url"]).rstrip("/")
     baseline_url = f"{site_url}/reference/source-baseline/"
 
@@ -47,6 +48,7 @@ def on_config(config: dict[str, object]) -> dict[str, object]:
         "Source baseline: "
         f"CIEL Lab <code>{str(ciel_lab['commit'])[:7]}</code> · "
         f"CIEL Scripts <code>{str(ciel_scripts['commit'])[:7]}</code> · "
+        f"OCL Skills <code>{str(ocl_skills['commit'])[:7]}</code> · "
         f'<a href="{baseline_url}">details</a>'
     )
     return config
@@ -58,12 +60,15 @@ def on_page_markdown(markdown: str, **_: object) -> str:
     baseline = _load_baseline()
     ciel_lab = _source(baseline, "ciel_lab_v2")
     ciel_scripts = _source(baseline, "ciel_scripts")
+    ocl_skills = _source(baseline, "ocl_skills")
     reviewed_evidence = baseline["reviewed_evidence"]
     assert isinstance(reviewed_evidence, dict)
     slack = reviewed_evidence["slack"]
     assert isinstance(slack, dict)
     github_issue = reviewed_evidence["github_issue"]
     assert isinstance(github_issue, dict)
+    ocl_skills_issue = reviewed_evidence["ocl_skills_issue"]
+    assert isinstance(ocl_skills_issue, dict)
 
     replacements = {
         "{{ BASELINE_CAPTURED_AT }}": str(baseline["captured_at"]),
@@ -100,10 +105,31 @@ def on_page_markdown(markdown: str, **_: object) -> str:
             f"{ciel_scripts['repository']}/compare/{ciel_scripts['commit']}..."
             f"{quote(str(ciel_scripts['branch']), safe='/')}"
         ),
+        "{{ BASELINE_OCL_SKILLS_REPOSITORY }}": str(ocl_skills["repository"]),
+        "{{ BASELINE_OCL_SKILLS_BRANCH }}": str(ocl_skills["branch"]),
+        "{{ BASELINE_OCL_SKILLS_BRANCH_URL }}": (
+            f"{ocl_skills['repository']}/tree/"
+            f"{quote(str(ocl_skills['branch']), safe='/')}"
+        ),
+        "{{ BASELINE_OCL_SKILLS_COMMIT }}": str(ocl_skills["commit"]),
+        "{{ BASELINE_OCL_SKILLS_COMMIT_SHORT }}": str(ocl_skills["commit"])[:7],
+        "{{ BASELINE_OCL_SKILLS_COMMIT_URL }}": (
+            f"{ocl_skills['repository']}/commit/{ocl_skills['commit']}"
+        ),
+        "{{ BASELINE_OCL_SKILLS_COMMIT_DATE }}": str(ocl_skills["commit_date"]),
+        "{{ BASELINE_OCL_SKILLS_WORKTREE }}": _working_tree_summary(ocl_skills),
+        "{{ BASELINE_OCL_SKILLS_COMPARE_URL }}": (
+            f"{ocl_skills['repository']}/compare/{ocl_skills['commit']}..."
+            f"{quote(str(ocl_skills['branch']), safe='/')}"
+        ),
         "{{ BASELINE_SLACK_REVIEWED_THROUGH }}": str(slack["reviewed_through"]),
         "{{ BASELINE_ISSUE_URL }}": str(github_issue["url"]),
         "{{ BASELINE_ISSUE_REVIEWED_THROUGH }}": str(
             github_issue["reviewed_through"]
+        ),
+        "{{ BASELINE_OCL_SKILLS_ISSUE_URL }}": str(ocl_skills_issue["url"]),
+        "{{ BASELINE_OCL_SKILLS_ISSUE_REVIEWED_THROUGH }}": str(
+            ocl_skills_issue["reviewed_through"]
         ),
     }
 

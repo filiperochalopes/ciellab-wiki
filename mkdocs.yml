@@ -108,6 +108,8 @@ nav:
       - Terminology loaders: ciel-scripts/loaders.md
       - OCL workflows: ciel-scripts/ocl-workflows.md
       - QA and release assets: ciel-scripts/qa-and-release.md
+  - OCL support skills:
+      - Overview: ocl-skills/index.md
   - Troubleshooting:
       - Common questions: troubleshooting/common-questions.md
       - Resolved problems: troubleshooting/resolved-problems.md

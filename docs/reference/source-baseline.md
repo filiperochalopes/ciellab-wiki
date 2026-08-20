@@ -12,12 +12,14 @@ added after the review.
 | --- | --- | --- | --- | --- |
 | [CIEL Lab v2]({{ BASELINE_CIEL_LAB_REPOSITORY }}) | [`{{ BASELINE_CIEL_LAB_BRANCH }}`]({{ BASELINE_CIEL_LAB_BRANCH_URL }}) | [`{{ BASELINE_CIEL_LAB_COMMIT_SHORT }}`]({{ BASELINE_CIEL_LAB_COMMIT_URL }}) | `{{ BASELINE_CIEL_LAB_COMMIT_DATE }}` | {{ BASELINE_CIEL_LAB_WORKTREE }} |
 | [CIEL scripts]({{ BASELINE_CIEL_SCRIPTS_REPOSITORY }}) | [`{{ BASELINE_CIEL_SCRIPTS_BRANCH }}`]({{ BASELINE_CIEL_SCRIPTS_BRANCH_URL }}) | [`{{ BASELINE_CIEL_SCRIPTS_COMMIT_SHORT }}`]({{ BASELINE_CIEL_SCRIPTS_COMMIT_URL }}) | `{{ BASELINE_CIEL_SCRIPTS_COMMIT_DATE }}` | {{ BASELINE_CIEL_SCRIPTS_WORKTREE }} |
+| [OCL skills]({{ BASELINE_OCL_SKILLS_REPOSITORY }}) | [`{{ BASELINE_OCL_SKILLS_BRANCH }}`]({{ BASELINE_OCL_SKILLS_BRANCH_URL }}) | [`{{ BASELINE_OCL_SKILLS_COMMIT_SHORT }}`]({{ BASELINE_OCL_SKILLS_COMMIT_URL }}) | `{{ BASELINE_OCL_SKILLS_COMMIT_DATE }}` | {{ BASELINE_OCL_SKILLS_WORKTREE }} |
 
 ### Full commit identifiers
 
 ```text
 CIEL Lab v2: {{ BASELINE_CIEL_LAB_COMMIT }}
 CIEL scripts: {{ BASELINE_CIEL_SCRIPTS_COMMIT }}
+OCL skills: {{ BASELINE_OCL_SKILLS_COMMIT }}
 ```
 
 !!! warning "The initial baseline included local changes"
@@ -34,6 +36,7 @@ Use the comparison links for a quick remote review:
 
 - [CIEL Lab changes since the baseline]({{ BASELINE_CIEL_LAB_COMPARE_URL }})
 - [CIEL scripts changes since the baseline]({{ BASELINE_CIEL_SCRIPTS_COMPARE_URL }})
+- [OCL skills changes since the baseline]({{ BASELINE_OCL_SKILLS_COMPARE_URL }})
 
 For local working copies, run:
 
@@ -84,3 +87,4 @@ after the corresponding new material has been reviewed.
 | --- | --- |
 | Private CIEL Lab Slack conversation | `{{ BASELINE_SLACK_REVIEWED_THROUGH }}` |
 | [Wiki issue 2609]({{ BASELINE_ISSUE_URL }}) | `{{ BASELINE_ISSUE_REVIEWED_THROUGH }}` |
+| [OCL skills guide issue 2680]({{ BASELINE_OCL_SKILLS_ISSUE_URL }}) | `{{ BASELINE_OCL_SKILLS_ISSUE_REVIEWED_THROUGH }}` |
