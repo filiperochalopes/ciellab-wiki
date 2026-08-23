@@ -2,8 +2,8 @@
 
 `ciel-scripts` is the operational companion to the CIEL Lab application. It
 contains one-purpose programs for loading external terminologies, preparing OCL
-bulk imports, checking ICD-11 mappings, generating release artifacts, and
-testing exports.
+bulk imports, checking ICD-11 and IMO mappings, generating release artifacts,
+and testing exports.
 
 It is a toolbox, not a second web application.
 
@@ -26,6 +26,9 @@ flowchart LR
     Assets --> SQL["OpenMRS SQL"]
     Assets --> QA["Validation assets"]
     Assets --> Enriched["Enriched OCL import"]
+    Athena["OHDSI Athena\nOMOP vocabulary"] --> OMOP["OMOP Standard import\nand CIEL mappings"]
+    OMOP --> OCL
+    OMOP --> Bulk
 ```
 
 ## Standard loader contract
@@ -83,3 +86,17 @@ Credential names are not completely uniform in this historical toolbox:
 8. verify OCL and CIEL Lab projections.
 9. Repeat the reviewed process for production.
 
+## OMOP Standard and IMO comparison
+
+The OMOP workflow stages an OHDSI Athena vocabulary in a disposable local
+PostgreSQL database, then prepares two reviewable OCL bulk-import JSONL files:
+the `OHDSI/OMOP-Standard` concept subset and CIEL-to-OMOP Standard mappings.
+Use `setup_omop_postgres.sh` for the local staging database and
+`ocl_omop_standard_import.py` to generate the files. It writes to OCL only
+when an explicit upload option is used; inspect both artifacts and their report
+first.
+
+`compare_imo_mappings_to_ciel.py` is a read-only companion for comparing IMO
+ProblemIT or ProcedureIT mapping tables with a CIEL export. It produces a
+machine-readable CSV, curator XLSX, and JSON summary. Review differences before
+creating or changing mappings in either system.

@@ -1,25 +1,25 @@
 schema_version: 1
-captured_at: '2026-08-07T19:13:58Z'
+captured_at: '2026-08-23T13:55:22Z'
 sources:
   ciel_lab_v2:
     name: CIEL Lab v2
     repository: https://github.com/filiperochalopes/ciel-lab-v2
     branch: main
-    commit: 6a45765c93c6ec6cde83fc846ed4c868269463f4
-    commit_date: '2026-08-07T14:59:54-03:00'
+    commit: c24edbbf9d54256f8f3f215a9e44ceac964bd190
+    commit_date: '2026-08-23T09:46:54-03:00'
     working_tree:
-      dirty: true
-      changed_path_count: 10
-      untracked_path_count: 1
-      tracked_diff_sha256: 0b7e3eb87718387bfcd01a2b336e33a9999059ca3637b6c6eb625861108dccac
-      untracked_content_sha256: bef92d9674ae954047e2ccc89445b41f1dd887a0d71b9203ee5c23ee8bcee8ca
-    note: Documentation also considered intentional local changes at capture time.
+      dirty: false
+      changed_path_count: 0
+      untracked_path_count: 0
+      tracked_diff_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      untracked_content_sha256: null
+    note: Documentation was reviewed against a clean working tree.
   ciel_scripts:
     name: CIEL scripts
     repository: https://github.com/filiperochalopes/ciel-scripts
     branch: main
-    commit: 81d40e93d5aaba4a62416c4b0ac2a65287b4d9cf
-    commit_date: '2026-08-06T17:26:47-03:00'
+    commit: a0dc70e5c0545b0979c11ddb7469e485a3b1ce9a
+    commit_date: '2026-08-20T16:50:03-03:00'
     working_tree:
       dirty: false
       changed_path_count: 0
@@ -31,8 +31,8 @@ sources:
     name: OCL skills
     repository: https://github.com/filiperochalopes/ocl-skills
     branch: main
-    commit: d4308b00c8b779c1228e3c8f01c43979abd69275
-    commit_date: '2026-08-20T16:45:52-03:00'
+    commit: 24c04d07a0675972d6fbe84d9a9cf83a121622ee
+    commit_date: '2026-08-21T15:29:47-03:00'
     working_tree:
       dirty: false
       changed_path_count: 0

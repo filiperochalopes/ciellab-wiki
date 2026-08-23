@@ -59,6 +59,11 @@ right unit for:
 - using the MCP App to prepare a preview;
 - separating approved changes from unresolved findings.
 
+When you select **Review** for filtered failures, name the worklist before it
+is created. The suggested name includes the source, version, and active filters;
+adjust it to make later worklist selection unambiguous. Worklists cannot be
+renamed afterwards.
+
 Opening an individual cross-concept finding can create a **Temporary worklist**
 in Concept Manager. It contains the finding's concept and the related concepts
 needed to compare or merge it. This browser-session worklist is not saved in

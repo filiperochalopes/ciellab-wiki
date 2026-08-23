@@ -11,7 +11,9 @@ together, and supports controlled edits.
 1. Choose HEAD or a fixed CIEL version.
 2. Search by code, name, or description.
 3. Select textual or semantic search.
-4. Add concept-class or other available filters.
+4. Add concept-class, clinical-status, or other available filters. Use
+   `clinical:false` to find explicitly non-clinical concepts; concepts without
+   that marker are clinical by default.
 5. Open the result and verify the concept identifier before editing.
 
 **Textual search** is predictable for known terms and codes. **Semantic search**
@@ -26,6 +28,7 @@ Review these elements together:
 - synonyms, locale, and name type;
 - descriptions;
 - active and retired status;
+- clinical status;
 - direct mappings;
 - reverse associations or references;
 - current source/version.

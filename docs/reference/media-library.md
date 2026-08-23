@@ -43,6 +43,8 @@ The initial reviewed screenshots are versioned because they are small:
 - Mapping-candidate CSV import and IMO Procedures review (six WebP screenshots
   from [issue #2608](https://github.com/OpenConceptLab/ocl_issues/issues/2608));
 - Release workflow;
+- Release SQL artifact action menu (Liquibase conversion and CIELAdmin deploy);
+- Release pipeline notification settings and Chrome permission recovery;
 - Concept Manager.
 
 Before adding a screenshot:

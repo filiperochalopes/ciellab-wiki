@@ -41,7 +41,9 @@ The latest public guidance is in [OCL issue #2680](https://github.com/OpenConcep
 
 1. Confirm the target owner type, owner, source, validation profile, default locale, and supported locales. For CIEL-governed content, select the `ciel` profile only after the destination is confirmed.
 2. Classify each concept deliberately. A concept class and datatype are editorial decisions, not values to let defaults infer.
-3. Draft the batch, including any `extras`. For the `clinical` attribute, the current CIEL rule is boolean `false` for a non-clinical concept; omit the attribute for the default clinical behavior.
+3. Draft the batch, including any `extras`. For the `is_clinical` attribute,
+   the current CIEL skill rule is boolean `false` for a non-clinical concept;
+   omit the attribute for the default clinical behavior.
 4. Run the skill validation and resolve every error. Review warnings, especially name types and unknown extras keys.
 5. Review the generated CSV and explicitly approve it before producing the ZIP.
 6. Upload the ZIP manually in OCL, then verify both the concepts and the expected mapping count. The importer summary counts concept lines and may not show nested mappings.
