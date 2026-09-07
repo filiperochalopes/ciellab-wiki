@@ -81,6 +81,32 @@ Valkey authoritative. It uses them as optimized projections:
 - **MySQL terminology views** expose a consistent shape for loaders such as
   SNOMED CT, ICD-11, and RxNorm.
 
+## Why Valkey and Qdrant coexist
+
+Valkey and Qdrant solve different parts of the same problem. They are both
+rebuildable projections of terminology data; neither replaces OCL as the source
+of truth.
+
+**Valkey is the application-facing HEAD mirror.** It keeps structured CIEL
+concept data close to the API so the product can retrieve a concept, browse
+HEAD, apply exact filters, compare a draft with known CIEL content, and support
+background workflows without repeatedly asking OCL for the same assembled
+payloads. It is designed for fast key and set lookups, not for ranking text by
+meaning.
+
+**Qdrant is the search-facing index.** It turns CIEL names and indexed external
+terminologies into lexical and semantic search candidates. This supports
+type-ahead name search, semantic mapping suggestions, and checks against
+reference terminology codes. It is optimized for finding relevant candidates,
+not for acting as the complete editable representation of a CIEL concept.
+
+The normal lifecycle is therefore complementary: a HEAD refresh first rebuilds
+the structured Valkey mirror, then derives the Qdrant index from it. After a
+concept edit, Valkey keeps local reads responsive while Qdrant is refreshed so
+future searches reflect the change. Keeping these responsibilities separate
+avoids turning the search index into a document store or duplicating a full-text
+and vector index inside the cache.
+
 ## Embeddings and semantic search
 
 The embedding adapter speaks an OpenAI-compatible API and defaults to
