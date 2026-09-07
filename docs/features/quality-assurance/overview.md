@@ -39,6 +39,33 @@ is a durable set of items selected for human review. Reports can become stale as
 HEAD changes; worklists are the checkpoint that lets a reviewer resume without
 depending on the original query returning the same rows.
 
+## Configure the QA catalog
+
+Open **QA > Settings** to review where each code-defined QA rule runs. The
+settings are global: they apply to all curators because Bulk Validation runs as
+a background job. Administrators can change them; other users can inspect the
+current configuration but cannot edit it.
+
+1. Find the rule under its category.
+2. Use the **Bulk Validation** switch to include or exclude it from new bulk
+   reports.
+3. Use the **Concept Editor** switch to include or exclude it from draft
+   validation.
+4. Use the trailing **…** menu for **Show worklist button** and **Use dynamic
+   focus**. These change how a finding is presented; they do not change whether
+   the rule runs.
+
+A disabled rule is not evaluated, rather than being evaluated and hidden.
+Rules marked **Instant** use the draft itself and can block a save. **Deferred**
+rules need the HEAD mirror or a reference-terminology index, so the editor shows
+their pending state without blocking initial editing. Some switches are locked
+when the rule cannot run in that context or the form already prevents the
+violation.
+
+Allow up to 30 seconds for a global change to reach another API worker. Verify
+the effective setting by reloading **QA > Settings** before interpreting a new
+bulk report or editor result.
+
 ## Release gate
 
 The Release workflow expects a recent successful HEAD bulk validation. The
@@ -48,4 +75,3 @@ the source is not release-ready.
 
 The deterministic rules and UI behavior were developed under
 [OpenConceptLab/ocl_issues#2401](https://github.com/OpenConceptLab/ocl_issues/issues/2401).
-

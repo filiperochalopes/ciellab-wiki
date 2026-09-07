@@ -1,12 +1,12 @@
 schema_version: 1
-captured_at: '2026-08-23T13:55:22Z'
+captured_at: '2026-09-07T14:55:07Z'
 sources:
   ciel_lab_v2:
     name: CIEL Lab v2
     repository: https://github.com/filiperochalopes/ciel-lab-v2
     branch: main
-    commit: c24edbbf9d54256f8f3f215a9e44ceac964bd190
-    commit_date: '2026-08-23T09:46:54-03:00'
+    commit: 7de5471989353cd43873ec65e6ea80fa2413ab60
+    commit_date: '2026-09-07T09:01:04-03:00'
     working_tree:
       dirty: false
       changed_path_count: 0
@@ -18,8 +18,8 @@ sources:
     name: CIEL scripts
     repository: https://github.com/filiperochalopes/ciel-scripts
     branch: main
-    commit: a0dc70e5c0545b0979c11ddb7469e485a3b1ce9a
-    commit_date: '2026-08-20T16:50:03-03:00'
+    commit: 8cd085a0c3f9ff9a18077ea51e4b15403b0b5b94
+    commit_date: '2026-09-07T11:54:47-03:00'
     working_tree:
       dirty: false
       changed_path_count: 0
@@ -43,10 +43,10 @@ sources:
 reviewed_evidence:
   slack:
     scope: Private CIEL Lab conversation with Andrew
-    reviewed_through: '2026-08-06'
+    reviewed_through: '2026-09-07'
   github_issue:
     url: https://github.com/OpenConceptLab/ocl_issues/issues/2609
-    reviewed_through: '2026-08-06'
+    reviewed_through: '2026-08-26'
   ocl_skills_issue:
     url: https://github.com/OpenConceptLab/ocl_issues/issues/2680
-    reviewed_through: '2026-08-20'
+    reviewed_through: '2026-08-24'

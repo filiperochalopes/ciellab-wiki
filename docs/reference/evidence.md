@@ -48,6 +48,14 @@ The synthesis emphasized repeated questions, confirmed behavior, resolved
 defects, and explanations supported by the codebase. It does not publish raw
 private messages or private Slack permalinks.
 
+The incremental review covered the same authorized conversation from 7 August
+through 7 September 2026. It searched the product name, QA, descriptions,
+unretire, worklists, Quick View, and attached files, then read the selected
+threads in full. The review confirmed the deployed unretire and QA-settings
+workflows and identified small instructional screenshots. Raw attachments stay
+under the ignored `_private/` area; only two reviewed, public-safe screenshots
+are versioned with their feature documentation.
+
 ## Topics promoted into documentation
 
 - Required Class Mapping filter semantics and partial review;
@@ -61,6 +69,10 @@ private messages or private Slack permalinks.
 - release backup, QA gate, diff, and artifacts;
 - MCP token setup and mandatory human approval;
 - translation and display-name review.
+- QA rule execution settings, deferred checks, and per-rule finding behavior;
+- restoration of an accidentally retired concept;
+- Concept Quick View and worklist resolution controls;
+- actionable OCL validation messages on rejected writes.
 
 ## Issue cross-references
 
@@ -70,6 +82,14 @@ private messages or private Slack permalinks.
 - [#2535 — CIEL HEAD/MCP cache behavior](https://github.com/OpenConceptLab/ocl_issues/issues/2535)
 - [#2608 — IMO procedure mapping workflow](https://github.com/OpenConceptLab/ocl_issues/issues/2608)
 - [#2680 — clinical attribute and OCL support-skill installation](https://github.com/OpenConceptLab/ocl_issues/issues/2680)
+- [#2741 — one active description per locale](https://github.com/OpenConceptLab/ocl_issues/issues/2741)
+- [#2742 — QA rule execution settings](https://github.com/OpenConceptLab/ocl_issues/issues/2742)
+- [#2743 — QA rule finding behavior](https://github.com/OpenConceptLab/ocl_issues/issues/2743)
+- [#2750 — unretire a concept](https://github.com/OpenConceptLab/ocl_issues/issues/2750)
+- [#2751 — actionable OCL write errors](https://github.com/OpenConceptLab/ocl_issues/issues/2751)
+- [#2754 — description-property migration](https://github.com/OpenConceptLab/ocl_issues/issues/2754)
+- [#2755 — Concept Quick View](https://github.com/OpenConceptLab/ocl_issues/issues/2755)
+- [#2756 — worklist resolution control](https://github.com/OpenConceptLab/ocl_issues/issues/2756)
 
 ## Exclusion policy
 

@@ -39,6 +39,23 @@ Refresh that cache when:
 - `updated_at` is suspected to be stale;
 - verification counts disagree with OCL.
 
+## Description-property migration artifact
+
+`ciel_description_properties_migration.py` prepares an offline, auditable OCL
+Bulk Import NDJSON migration for [issue #2754](https://github.com/OpenConceptLab/ocl_issues/issues/2754).
+It reads a CIEL export ZIP or JSON file and never uploads or applies changes.
+
+The migration projects only explicit active-description markers into configured
+flat locale properties: `DEF:` to `definition_<locale>`, `DESC:` to
+`description_<locale>`, `CAPTION:` to `caption_<locale>`, and `REF:` to
+`reference_<locale>`. It normalizes marker labels to uppercase while preserving
+all other description characters, reports unsupported properties and conflicts,
+removes stale legacy description metadata, and preserves unrelated extras.
+
+Run it first against a fixed export and review its NDJSON plus JSON/CSV audit
+reports. Do not apply a generated file when the report identifies conflicting
+marker values, ambiguous description linkage, or unsupported property codes.
+
 ## Collections and references
 
 | Script | Purpose |
@@ -66,4 +83,3 @@ review.
 `ocl_uploader_whoatc.py` converts WHO ATC data into JSONL or JSON and can
 optionally upload the source. Preserve the upstream release identifier and
 license/provenance metadata with the generated artifact.
-

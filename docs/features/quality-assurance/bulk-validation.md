@@ -39,10 +39,26 @@ CSV download and in a worklist created from the report.
 
 ## Rule catalog
 
-The implementation contains rule identifiers **FR01 through FR25**. They cover
-structural, name, mapping, and external-terminology consistency checks. Use the
-rule description shown in the report as the immediate contract; when changing
-a rule, update both its implementation and this wiki.
+The implementation contains rule identifiers through **FR32** (with intentional
+gaps). They cover structural, name, description, mapping, vocabulary, and
+external-terminology consistency checks. Use the rule description shown in the
+report as the immediate contract.
+
+Recent checks include:
+
+- **FR-27:** a `SAME-AS` mapping must not coexist with primary and secondary
+  ICD-10-WHO mappings for the same concept.
+- **FR-28:** at most one active description may exist for each locale; retired
+  descriptions do not count.
+- **FR-29 to FR-32:** map type, mapping source, concept class, and datatype
+  must use the canonical vocabulary offered by CIEL Lab's write paths. These
+  checks compare values verbatim, so a near spelling is a finding rather than
+  an automatic normalization.
+
+FR-29 to FR-32 can be skipped operationally when their upstream vocabulary is
+unavailable. A skipped check is recorded as unavailable; it is not evidence
+that the value is valid. Correct the source/index condition and rerun the
+report.
 
 FR22 performs indexed terminology checks. It applies to supported indexed
 terminologies, not only SNOMED CT. If a source has not been indexed or its index

@@ -158,6 +158,23 @@ CIEL HEAD refresh and indexing begin at **00:00 UTC**, and the dashboard refresh
 begins at **04:00 UTC**. Manual refresh actions can enqueue the same expensive
 work outside that schedule.
 
+## QA execution path
+
+The QA catalog separates rules into two execution tiers. **Local** rules use
+only the draft and run in the Concept Editor's immediate save-gating path.
+**Deferred** rules need the Valkey HEAD mirror, Qdrant, or an OCL-backed
+reference index; the editor requests them separately and represents a pending
+or unavailable result rather than treating an unavailable lookup as a clean
+result.
+
+Bulk Validation uses the same deterministic catalog, but evaluates it across a
+selected source/version and persists the report in MySQL. Its global execution
+configuration is stored with application state and passed into the evaluator,
+so a disabled rule incurs no evaluation work. The HEAD mirror includes
+secondary indexes for fully specified names, preferred names, and mapping codes
+to support the editor's cross-concept checks; a mirror built before those
+indexes is reported as unavailable until refreshed.
+
 ## Refresh versus reload
 
 These words are intentionally different:

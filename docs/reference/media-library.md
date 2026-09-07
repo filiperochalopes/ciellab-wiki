@@ -46,6 +46,8 @@ The initial reviewed screenshots are versioned because they are small:
 - Release SQL artifact action menu (Liquibase conversion and CIELAdmin deploy);
 - Release pipeline notification settings and Chrome permission recovery;
 - Concept Manager.
+- Concept Manager restoration of a retired concept (reviewed public GitHub
+  attachment for [issue #2750](https://github.com/OpenConceptLab/ocl_issues/issues/2750)).
 
 Before adding a screenshot:
 

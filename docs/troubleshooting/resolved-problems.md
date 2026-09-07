@@ -13,6 +13,8 @@ CIEL Lab development. It deliberately avoids private Slack links.
 | HEAD cache after restart | Bulk QA could fail after the service restarted or its cache was cleared. | The normal refresh chain repopulates the HEAD mirror and reindexes it. Durable worklists remain separate from the rebuildable cache. | Current worker/cache implementation; related [issue #2535](https://github.com/OpenConceptLab/ocl_issues/issues/2535) |
 | Long-running review | A reviewer could lose the practical result set as moving HEAD changed. | Reports can create durable worklists, which are the supported resume point. | Current report/worklist implementation |
 | MCP mutation safety | Early explanations made the boundary between AI proposal and persistence easy to misunderstand. | MCP tools prepare previews; the authenticated human widget performs the final commit. | Current MCP README and implementation |
+| Rejected OCL writes | A concept save or MCP bulk-edit item could show only a generic HTTP 400 failure. | CIEL Lab extracts the actionable validation text from supported OCL error responses and keeps it with the affected write or bulk-edit item. | [Issue #2751](https://github.com/OpenConceptLab/ocl_issues/issues/2751) and current code |
+| Accidental concept retirement | A retired concept could be found and opened but had no restoration action. | In edit mode, **Unretire** queues a restoration, clears the retirement reason, and refreshes the concept after the OCL write succeeds. | [Issue #2750](https://github.com/OpenConceptLab/ocl_issues/issues/2750) |
 
 ## Regression checks
 
@@ -26,9 +28,10 @@ After changes in these areas, verify:
 5. FR22 tests a non-SNOMED indexed terminology.
 6. A cleared HEAD cache can be rebuilt without deleting durable worklists.
 7. An MCP tool call cannot persist an OCL change without the human widget.
+8. A rejected OCL write shows the upstream validation reason without exposing credentials or raw response data.
+9. A retired concept can be restored and is confirmed active by a fresh server read.
 
 The semantic specificity behavior tracked in
 [issue #2389](https://github.com/OpenConceptLab/ocl_issues/issues/2389) is not
 listed as resolved. It remains a retrieval limitation and belongs under
 [Known limitations](known-limitations.md).
-

@@ -36,6 +36,22 @@ Review these elements together:
 An apparently missing mapping may be represented in another direction or under
 a different source identifier. Inspect the complete mapping context.
 
+### Open a Concept Quick View
+
+Use **Option/Alt+click** on a `CIEL:<id>` reference to inspect a concept without
+leaving the current workflow. **Alt+Enter** provides the same action from the
+keyboard. A normal click keeps its normal destination, and Cmd/Ctrl-click or a
+middle click still opens the link in a tab.
+
+The popover reads the local HEAD mirror and shows the concept name, class,
+datatype, retired status, and units where available. Select **View more** to
+reveal mappings. Mapping rows appear immediately; a human-readable external
+code name is an optional enhancement and may arrive later.
+
+If the popover says that the concept was not found in the local HEAD mirror,
+refresh the CIEL snapshot or use the normal link to check the authoritative OCL
+record. Quick View does not substitute a live OCL request for the mirror.
+
 ## Edit safely
 
 1. Open the concept from a fresh search.
@@ -49,6 +65,28 @@ a different source identifier. Inspect the complete mapping context.
 Avoid repeated clicks while a save is pending. The UI stages and refreshes
 several projections, so the item may not instantly appear in every search
 surface.
+
+## Restore a retired concept
+
+Use **Unretire** only to correct a retirement that should not remain in the
+source. It makes the concept active again and clears its retirement reason; it
+does not merge the concept or alter its names and mappings.
+
+1. In Concept Manager, search HEAD with `retired:true` and the concept ID.
+2. Open the retired result and select **Edit**.
+3. Select **Unretire** in the action bar, then confirm **Unretire** in the
+   dialog.
+4. Wait for the success message, then reload the concept and confirm that the
+   **Retired** badge is gone.
+5. Make any needed mapping or merge correction as a separate, reviewed action.
+
+![Concept Manager search narrowed to a retired concept by using retired:true and its CIEL ID](../../assets/screenshots/concept-manager-find-retired.png){ .ciellab-screenshot }
+
+![A retired concept in editing mode, with the Unretire action beside Cancel and Save concept](../../assets/screenshots/concept-manager-unretire.png){ .ciellab-screenshot }
+
+If OCL rejects the restore, CIEL Lab reverts its local state and shows the
+actionable OCL validation reason when one is available. Do not assume the
+concept was restored until a fresh server read shows it active.
 
 ## Create or copy
 
@@ -102,6 +140,12 @@ name can be skipped only when other planned copied names succeed.
 Worklists group concepts that require review and preserve progress while HEAD
 changes. A worklist can feed a bulk-edit preview, but every proposed mutation
 still requires human review and authorization.
+
+When a concept was opened from a saved worklist, the action bar also includes a
+**Resolved** / **Unresolved** control. It starts from the worklist item's saved
+status. The first edit changes it to **Resolved**; you can switch it back to
+**Unresolved** before saving when the finding still needs attention. The
+control is not shown outside a saved-worklist context.
 
 For a QA finding that relates multiple concepts, opening the finding can load a
 temporary worklist containing all related concepts. Use it to compare entries
