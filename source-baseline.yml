@@ -1,12 +1,12 @@
 schema_version: 1
-captured_at: '2026-09-07T14:55:07Z'
+captured_at: '2026-11-02T13:14:33Z'
 sources:
   ciel_lab_v2:
     name: CIEL Lab v2
     repository: https://github.com/filiperochalopes/ciel-lab-v2
     branch: main
-    commit: 7de5471989353cd43873ec65e6ea80fa2413ab60
-    commit_date: '2026-09-07T09:01:04-03:00'
+    commit: ce2c34969ab590bfaa7708f3e6c27d9a46010f41
+    commit_date: '2026-11-02T01:00:43-03:00'
     working_tree:
       dirty: false
       changed_path_count: 0
@@ -18,8 +18,8 @@ sources:
     name: CIEL scripts
     repository: https://github.com/filiperochalopes/ciel-scripts
     branch: main
-    commit: 8cd085a0c3f9ff9a18077ea51e4b15403b0b5b94
-    commit_date: '2026-09-07T11:54:47-03:00'
+    commit: 2a4268245419ebbeebf12357cd8fbc6db45aea80
+    commit_date: '2026-10-24T09:24:45-03:00'
     working_tree:
       dirty: false
       changed_path_count: 0
@@ -42,8 +42,9 @@ sources:
     note: Documentation was reviewed against a clean working tree.
 reviewed_evidence:
   slack:
-    scope: Private CIEL Lab conversation with Andrew
-    reviewed_through: '2026-09-07'
+    scope: Two authorized OpenMRS Slack conversations (one direct conversation and
+      one designated workspace conversation)
+    reviewed_through: '2026-11-02'
   github_issue:
     url: https://github.com/OpenConceptLab/ocl_issues/issues/2609
     reviewed_through: '2026-08-26'

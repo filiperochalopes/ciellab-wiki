@@ -91,6 +91,19 @@ Background tasks can produce:
 Artifact generation can outlive the browser request. Use task state and the
 artifact record instead of assuming a closed browser canceled the job.
 
+### Downloading the change report
+
+A Markdown change report may need to be prepared by a background worker before
+it can be downloaded. If the page reports that preparation is in progress, wait
+for the advertised retry interval and request the download again; do not start a
+second release solely because the first download is not ready.
+
+If no completed staged-change snapshot exists, refresh or rebuild the staged
+changes before retrying. A failed report build is an operational failure to
+inspect, not a partial report to treat as authoritative. Completed snapshots are
+retained in a bounded history per OCL environment, so save evidence needed for a
+long-lived release record.
+
 ### SQL artifact actions
 
 When the SQL artifact is **READY**, **Download SQL** is the primary action. Its

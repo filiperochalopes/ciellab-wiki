@@ -14,10 +14,17 @@ together, and supports controlled edits.
 4. Add concept-class, clinical-status, or other available filters. Use
    `clinical:false` to find explicitly non-clinical concepts; concepts without
    that marker are clinical by default.
-5. Open the result and verify the concept identifier before editing.
+5. Unqualified text and index searches return active concepts by default. Add
+   `retired:true` when the historical record is intentionally part of the task.
+6. Open the result and verify the concept identifier before editing.
 
 **Textual search** is predictable for known terms and codes. **Semantic search**
 is useful when wording differs, but its score is only a retrieval signal.
+
+For a non-empty **Index Search** query with no explicit column sort, results are
+ordered by relevance. Selecting an ID, name, class, or datatype sort keeps that
+column order; a blank query uses ID order. Relevance improves the order of the
+same matched set and does not turn a semantic suggestion into clinical proof.
 
 ## Inspect the concept
 
@@ -87,6 +94,26 @@ does not merge the concept or alter its names and mappings.
 If OCL rejects the restore, CIEL Lab reverts its local state and shows the
 actionable OCL validation reason when one is available. Do not assume the
 concept was restored until a fresh server read shows it active.
+
+### Mapping drafts and QA feedback
+
+Keep an incomplete mapping row as a draft until its required identity fields are
+known. CIEL Lab does not present a partially entered mapping as a completed
+mapping QA finding, and it preserves the in-progress draft while related QA
+state refreshes. Complete the source, target code, and map type before treating
+validation feedback as the result for that mapping.
+
+For an existing mapping, verify its stable mapping identifier as well as the
+source, code, and relationship. The identifier distinguishes otherwise similar
+mappings in searches, review tables, and bulk-edit previews; a new proposed
+mapping has no identifier until OCL creates it.
+
+The same safeguard applies to names. A newly added blank name row remains form
+input only: changing its locale or type does not start QA or add it to the save
+payload. Once it has text, it becomes part of the draft and normal validation
+begins. Clearing an existing or previously admitted active name is not an
+implicit deletion; **Names require text** blocks Save until the curator restores
+text or removes that name deliberately.
 
 ## Create or copy
 

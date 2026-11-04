@@ -64,6 +64,34 @@ FR22 performs indexed terminology checks. It applies to supported indexed
 terminologies, not only SNOMED CT. If a source has not been indexed or its index
 is stale, the finding set can be incomplete.
 
+## Job status, cancellation, and recovery
+
+Bulk Validation runs on the dedicated **bulk** worker. The request returns a
+persisted job; leaving the page does not cancel the scan. A background job is
+expected to finish as **Succeeded**, **Failed**, or **Cancelled** rather than
+remaining indefinitely in progress.
+
+If a report is no longer needed, request cancellation from its job controls.
+Cancellation is observed between batches, so a large scan can take a short time
+to stop. Do not start a duplicate job while the first one is still pending or
+running.
+
+If a worker is interrupted, the service detects a stale job and marks it failed
+rather than leaving it running forever. Review the failure message and run a new
+report only after the worker, source, and HEAD mirror are healthy.
+
+### Retired-concept checks
+
+Some closed-vocabulary rules can also inspect retired concepts because release
+artifacts still need to represent retired rows. In **QA > Settings**, a rule can
+state whether it includes retired concepts. The report identifies findings on
+retired concepts and exposes a corresponding filter; a report with no such
+findings is not proof that every rule examined retired data.
+
+When a retired mapping must be corrected, use the reviewed sequence: **Unretire**
+the concept, correct the mapping with a canonical value, verify the save, then
+retire it again if it should remain historical. See [Concept Manager](../tools/concept-manager.md#restore-a-retired-concept).
+
 ## Save a worklist
 
 A report describes the source at run time. HEAD may move before review

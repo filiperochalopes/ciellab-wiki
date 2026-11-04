@@ -51,9 +51,10 @@ current configuration but cannot edit it.
    reports.
 3. Use the **Concept Editor** switch to include or exclude it from draft
    validation.
-4. Use the trailing **…** menu for **Show worklist button** and **Use dynamic
-   focus**. These change how a finding is presented; they do not change whether
-   the rule runs.
+4. Use the trailing **…** menu for **Show worklist button**, **Use dynamic
+   focus**, and—where the rule supports it—**Retired concepts**. Presentation
+   switches do not change whether a rule runs; retired-concept scope states
+   whether that rule evaluates historical rows in a bulk report.
 
 A disabled rule is not evaluated, rather than being evaluated and hidden.
 Rules marked **Instant** use the draft itself and can block a save. **Deferred**
@@ -61,6 +62,11 @@ rules need the HEAD mirror or a reference-terminology index, so the editor shows
 their pending state without blocking initial editing. Some switches are locked
 when the rule cannot run in that context or the form already prevents the
 violation.
+
+The single-active-description-per-locale rule is a current CIEL QA convention:
+retired descriptions do not count. Do not generalize it into a universal OCL
+modeling rule; a future workflow may deliberately need more than one description
+role in one locale.
 
 Allow up to 30 seconds for a global change to reach another API worker. Verify
 the effective setting by reloading **QA > Settings** before interpreting a new

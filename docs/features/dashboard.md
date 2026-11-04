@@ -24,3 +24,16 @@ The current implementation exposes:
 Dashboard data has a persisted projection and may fall back to live data. Small
 timing differences during a refresh do not necessarily indicate data loss.
 
+## Public statistics and locale coverage
+
+The public statistics endpoint used by the wiki is anonymous and cacheable. Its
+figures separate active from retired concepts and mappings, so a total is not a
+claim that every record is current or active. Public badge values can therefore
+lag a completed change briefly; refresh the source application before treating a
+cached figure as an operational discrepancy.
+
+Locale coverage is derived from translated-content rows and is capped at 100%.
+It is not the count of configured locales and it is not a clinical-quality score.
+Use it to identify where translation review may be needed, then inspect the
+source/version and the corresponding concepts before drawing a conclusion.
+

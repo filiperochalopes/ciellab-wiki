@@ -30,11 +30,40 @@ Existing durable worklists should not be discarded.
 No. Use immediate form validation for an individual edit. Run Bulk Validation
 for a source-wide check, major batch, investigation, or pre-release gate.
 
+## Why is my incomplete mapping not shown as a QA finding?
+
+A mapping row that is still being entered is a draft, not a completed mapping.
+Finish the source, target code, and map type, then review the resulting
+validation. The editor preserves incomplete drafts while QA state refreshes so
+that a partial row is not mistaken for a confirmed defect.
+
+## Can I stop a Bulk Validation that I no longer need?
+
+Yes. Request cancellation from the job controls and wait for the worker to
+finish its current batch. Do not create a duplicate while the first job remains
+pending or running. If a worker was interrupted, read the terminal job status;
+a stale job is failed for review rather than assumed to have completed.
+
 ## What is the difference between a report and a worklist?
 
 A report is a point-in-time validation result. A worklist is a durable selection
 for human review. Convert findings to a worklist when the task will continue
 while HEAD changes.
+
+## Why does a text search not find the middle of a word?
+
+Interactive text search is designed for word-prefix matching. Search from the
+start of a word, such as `diabe` for `diabetes`, rather than from a buried
+fragment such as `abetes`. This keeps type-ahead search fast and consistent
+across search surfaces. Use a reviewed contains filter only for a deliberate
+non-interactive investigation.
+
+## Why is a recent edit visible in one view but not another?
+
+CIEL Lab has different read paths. A live OCL read can reflect a successful
+write immediately, while a GraphQL, HEAD-mirror, or index-backed view may wait
+for its refresh or reindex cycle. Confirm the authoritative OCL state before
+retrying an edit, then allow the affected projection to catch up.
 
 ## Why is a retired code shown without a replacement?
 

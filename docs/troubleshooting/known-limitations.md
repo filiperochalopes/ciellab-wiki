@@ -40,6 +40,43 @@ one-to-many change.
 
 Mitigation: keep the finding open and perform manual terminology review.
 
+## MCP name-filter performance
+
+A broad MCP search filtered by names can still be slow while it performs a
+large CIEL scan. Narrow the source, locale, class, or mapping criteria before
+asking for a wide name filter, and treat the result as a review set rather than
+a real-time type-ahead surface. Incremental CIEL reindexing is not currently a
+published capability; refresh work remains full-rebuild oriented.
+
+Tracked by [ciel-lab-v2#84](https://github.com/filiperochalopes/ciel-lab-v2/issues/84)
+and [ciel-lab-v2#68](https://github.com/filiperochalopes/ciel-lab-v2/issues/68).
+
+## Production observability rollout
+
+Slow SQL, GraphQL, and OCL timing signals exist in the application, but their
+production usefulness depends on the deployed database configuration, restart,
+and a fresh observation window. Do not treat the presence of the feature in code
+as proof that production attribution is already complete.
+
+Tracked by [ciel-lab-v2#82](https://github.com/filiperochalopes/ciel-lab-v2/issues/82).
+
+## Large bulk imports and mapping-only sources
+
+A successful large OCL bulk import is not, by itself, proof that its mappings
+are searchable. Imports above the server's automatic-index threshold can be
+saved without an indexing task, so reindex the affected source before using
+mapping search or association views.
+
+Namespace and related global mapping searches can also restrict results to the
+latest **released** version of each repository. A mapping-only source with only
+HEAD may therefore remain absent from those views even after it is indexed.
+Create and verify the intended released version before treating the absence as a
+mapping loss.
+
+This behavior was reproduced for the CIEL-to-ICD-11-WHO migration and is
+tracked by [issue #2990](https://github.com/OpenConceptLab/ocl_issues/issues/2990)
+for better warnings and the remaining repository-version question.
+
 ## Concept merge compensation
 
 A merge spans several OCL writes, so it cannot be made atomic across requests.

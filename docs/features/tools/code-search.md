@@ -16,6 +16,24 @@ CIEL searches can use the current HEAD mirror or a fixed version. External
 terminologies are indexed on demand and may need a background indexing job
 before semantic results are complete.
 
+## Text matching and result order
+
+Textual search matches the beginning of words, including words later in a name;
+it is not arbitrary substring search. For example, `diabe` can find
+`diabetes`, but `abetes` does not find the middle of that word. Use a deliberate
+non-interactive contains filter only when the task genuinely requires matching
+inside a stored value.
+
+For human-readable names, straight and typographic apostrophes are folded for
+matching. A search for either `Crohn's` or `Crohns` can therefore find the same
+name after the CIEL index has been rebuilt.
+
+When no explicit column sort is selected, CIEL text results order the matched
+set by typed-term evidence. A preferred English name that begins with the query
+ranks ahead of a synonym-only or less contiguous match. This improves the first
+page without expanding the result set; semantic ranking remains a separate
+mode.
+
 ## Review a result
 
 1. Select the terminology and version.

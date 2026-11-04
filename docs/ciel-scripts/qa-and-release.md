@@ -40,6 +40,27 @@ Record the upstream retrieval date so a later rule change can be reproduced.
 - `check_retired_duplicate_mappings.py` detects duplicate mapping keys when at
   least one member is retired.
 
+## Description-property migration safety gate
+
+The description-property migration for [issue #2754](https://github.com/OpenConceptLab/ocl_issues/issues/2754)
+is a reviewable artifact workflow, not an automatic production update.
+
+1. Run `audit_ciel_description_property_readiness.py` against an immutable CIEL
+   export. It inventories markers, non-canonical labels, and ambiguous
+   reference/definition signals without inferring a property or writing to OCL.
+2. Curators review the generated CSV/NDJSON queue and approve only explicit
+   decisions.
+3. Run `hydrate_ciel_description_property_candidates.py` as the final read-only
+   live-HEAD gate. It excludes retired or changed candidates and stops artifact
+   generation when retrieval is incomplete.
+4. Run `ciel_description_properties_migration.py` to produce the offline NDJSON,
+   before/after review data, and audit reports. Review conflicts and unsupported
+   property types before any manual OCL import.
+
+The generated Concept lines preserve complete names and descriptions because an
+OCL Concept bulk update is not a PATCH. Apply only a reviewed artifact through
+the manual import workflow.
+
 ## Enrichment
 
 `generate_expanded_synonyms.py` produces resumable NDJSON with expanded clinical

@@ -81,6 +81,11 @@ Valkey authoritative. It uses them as optimized projections:
 - **MySQL terminology views** expose a consistent shape for loaders such as
   SNOMED CT, ICD-11, and RxNorm.
 
+A CIEL refresh currently rebuilds the indexed projection as a whole rather than
+performing a published incremental reindex. The full rebuild is deliberate for
+consistency, but it can re-embed content that did not change and must be treated
+as background operational work rather than an immediate editor action.
+
 ## Why Valkey and Qdrant coexist
 
 Valkey and Qdrant solve different parts of the same problem. They are both
@@ -153,10 +158,22 @@ The worker task families include:
 | Release artifacts | Produces SQL and Markdown diff artifacts and can publish Liquibase Runner output |
 | Retention | Deletes expired reports and related temporary state |
 
-Celery Beat schedules the regular refresh chain. In the observed configuration,
-CIEL HEAD refresh and indexing begin at **00:00 UTC**, and the dashboard refresh
-begins at **04:00 UTC**. Manual refresh actions can enqueue the same expensive
-work outside that schedule.
+Interactive OCL writes use a separate **interactive** worker queue so that a
+save, merge, or other curator action does not wait behind a long HEAD refresh,
+indexing pass, or bulk report. Long-running work uses the **bulk** queue. This
+separation improves responsiveness; it does not make the two task families
+independent of their shared OCL, database, cache, and index dependencies.
+
+User-started jobs record a durable terminal outcome. A task failure, a revoked
+task, or a worker that stops without reporting is handled through the same
+completion path, so the user can receive a result instead of an endless spinner.
+For a partially applied merge, a `rollback_failed` outcome still requires manual
+OCL review before retrying.
+
+Celery Beat schedules the regular refresh chain. Schedule interpretation uses
+`APP_TIMEZONE` (the documented default is `America/Chicago`); confirm the
+currently deployed schedule before relying on a clock time. Manual refresh
+actions can enqueue the same expensive work outside that schedule.
 
 ## QA execution path
 

@@ -34,27 +34,18 @@ The initial pages were derived from:
 When this wiki and the code disagree, verify the deployed version and update
 the documentation in the same change as the behavior.
 
-## Slack sample
+## Slack review method
 
-The source conversation is a private direct-message channel. The review used:
+The evidence review is restricted to two explicitly authorized OpenMRS Slack
+conversations: one direct conversation and one designated workspace
+conversation. The documentation process paginates the complete bounded history
+from 7 September 2026, opens every in-scope reply thread, and treats messages as
+private evidence rather than as publication-ready text.
 
-- a complete paginated search for the literal term `ciellab`, covering matches
-  from September 2025 through July 2026;
-- focused searches for Bulk Validation, fixed problems, worklists, cache,
-  semantic search, retired codes, release, translation, and MCP;
-- screenshots and video metadata attached to relevant messages.
-
-The synthesis emphasized repeated questions, confirmed behavior, resolved
-defects, and explanations supported by the codebase. It does not publish raw
-private messages or private Slack permalinks.
-
-The incremental review covered the same authorized conversation from 7 August
-through 7 September 2026. It searched the product name, QA, descriptions,
-unretire, worklists, Quick View, and attached files, then read the selected
-threads in full. The review confirmed the deployed unretire and QA-settings
-workflows and identified small instructional screenshots. Raw attachments stay
-under the ignored `_private/` area; only two reviewed, public-safe screenshots
-are versioned with their feature documentation.
+The synthesis promotes only repeated questions, confirmed behavior, resolved
+defects, and operational guidance that can be corroborated in current code,
+tests, or a public issue. It does not publish raw private messages, private
+permalinks, attachment URLs, personal context, or credentials.
 
 ## Topics promoted into documentation
 
@@ -69,8 +60,10 @@ are versioned with their feature documentation.
 - release backup, QA gate, diff, and artifacts;
 - MCP token setup and mandatory human approval;
 - translation and display-name review.
-- QA rule execution settings, deferred checks, and per-rule finding behavior;
+- QA rule execution settings, deferred checks, retired-concept scope, and per-rule finding behavior;
 - restoration of an accidentally retired concept;
+- incomplete mapping drafts and their QA feedback boundary;
+- background job completion, cancellation, and stale-job recovery;
 - Concept Quick View and worklist resolution controls;
 - actionable OCL validation messages on rejected writes.
 

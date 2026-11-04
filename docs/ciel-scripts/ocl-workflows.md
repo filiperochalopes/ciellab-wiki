@@ -56,6 +56,47 @@ Run it first against a fixed export and review its NDJSON plus JSON/CSV audit
 reports. Do not apply a generated file when the report identifies conflicting
 marker values, ambiguous description linkage, or unsupported property codes.
 
+## CIEL-to-ICD-11-WHO mapping-only workflow
+
+Two offline scripts separate the migration of CIEL-to-ICD-11-WHO mappings from
+CIEL HEAD itself.
+
+1. `export_ciel_to_icd11_who_mappings.py` accepts only an immutable export of a
+   **released** CIEL version. It creates a deterministic, mapping-only NDJSON
+   bundle for `CIEL/CIEL-to-ICD-11-WHO`; it never calls OCL or uploads data.
+2. Review the bundle, its hashes, audit JSON, rejected CSV, and mapping identity.
+   Mapping IDs, external IDs, target source, target code, and map type are kept
+   as evidence; mappings are not inferred from target code alone.
+3. Import the reviewed proxy bundle manually.
+4. `retire_ciel_icd11_who_head_mappings.py` can then prepare, from an immutable
+   HEAD export, a separate reviewed retirement plan for the active HEAD mappings.
+   It requires the proxy bundle as a cross-check and writes `__action: "DELETE"`
+   entries for manual upload; OCL treats those entries as retirements, not hard
+   deletion.
+5. Reindex both sources after the reviewed imports complete. Large OCL bulk
+   imports can exceed the automatic indexing threshold, so a successful upload
+   alone is not evidence that mappings are searchable.
+6. Create and verify a released version of the mapping-only source before relying
+   on **Namespace** or other searches that restrict results to each repository's
+   latest released version.
+
+Do not reverse this order. A retirement plan must not be applied until the
+mapping-only source was imported and verified.
+
+## Reconcile a local CIEL HEAD with production
+
+`sync_local_ciel_with_prod.py` compares an immutable production CIEL HEAD export
+with a local CIEL HEAD export. It can download ready exports with read-only GET
+requests or run entirely offline when both files are supplied. It produces an
+auditable local bulk-import bundle, ordered parts when needed, audit JSON, and a
+review CSV; it has no upload or apply mode.
+
+Use the output only after reviewing the desired state. Upload it manually to the
+local source with **Update existing** enabled. The reconciliation intentionally
+covers only Bulk-Import-representable Concept and Mapping HEAD state; it does not
+claim to synchronize source metadata, history, database IDs, timestamps, or
+checksums.
+
 ## Collections and references
 
 | Script | Purpose |
