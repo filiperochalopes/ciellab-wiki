@@ -21,6 +21,11 @@ The current implementation exposes:
 3. Follow a suspicious metric into the matching QA or tool page.
 4. Refresh derived dashboard metrics only when the scheduled job is stale.
 
+Hover over a legend entry in the concept and mapping trends or **Mappings by
+reference source** chart to emphasize that series and dim the others. Move the
+pointer away to restore all series. This interaction depends on the deployed
+application version.
+
 Dashboard data has a persisted projection and may fall back to live data. Small
 timing differences during a refresh do not necessarily indicate data loss.
 

@@ -35,6 +35,15 @@ Download them manually from the authenticated Slack conversation into
 `_private/slack-videos/`, using the manifest target names. Then review, trim,
 redact if necessary, and run `./scripts/sync-media.sh`.
 
+## Incremental review: November 2026
+
+A subsequent review identified ten screenshot candidates in the authorized
+Slack conversations. The downloaded originals and their review statuses remain
+in the ignored private media manifest. None has been approved for publication;
+privacy, source permission, provenance, or accuracy checks remain necessary.
+Slack file search lacked the required permission, so this is not a complete media
+inventory. No new recording was established from the accessible results.
+
 ## Screenshots
 
 The initial reviewed screenshots are versioned because they are small:

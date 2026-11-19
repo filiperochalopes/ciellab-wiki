@@ -97,7 +97,58 @@ covers only Bulk-Import-representable Concept and Mapping HEAD state; it does no
 claim to synchronize source metadata, history, database IDs, timestamps, or
 checksums.
 
+## RxNorm Extension subset
+
+`ocl_omop_rxnorm_extension_import.py` prepares the CIEL-related subset of the
+OHDSI RxNorm Extension from an Athena vocabulary ZIP and a CIEL export. Unlike
+the OMOP Standard flow, it does not require PostgreSQL. The output is a
+reviewable OCL bulk-import bundle; it is **not uploaded automatically**. See
+[issue #664](https://github.com/OpenConceptLab/ocl_online/issues/664) and the
+[upstream operator guide](https://github.com/filiperochalopes/ciel-scripts/blob/main/docs/omop_flow.md#rxnorm-extension-subset-ocl_online664).
+
+1. Obtain the intended Athena release and a complete CIEL export. Record their
+   versions and checksums. Use the export: the live API seed mode is disabled
+   until its completeness agrees with the export.
+2. Run the builder with `--athena-zip`, `--export-file`, and `--out-dir` as
+   described in its README. It seeds from CIEL mappings, including retired and
+   orphan Extension mappings, and expands the selected relationships by two
+   hops by default. Extension concept IDs use OMOP `concept_code`, not the
+   numeric `concept_id` used by OMOP Standard.
+3. Review the audit and review CSV, including missing seeds, retired concepts,
+   successors, and unresolved targets. The builder refuses unexpected synonym
+   rows rather than silently dropping them. The source defaults to private
+   pending confirmation of redistribution terms.
+4. For a new environment, use `ocl_omop_rxnorm_extension_source.py` in its
+   default dry-run mode first. Only with authorization, apply the reviewed
+   Source metadata; the tool reads it back. Bulk import alone does not update
+   metadata on an existing Source or set `match_algorithms`.
+5. Import the reviewed content manually into the intended environment, following
+   the upstream guide's Source-line and **Update existing** instructions. Rebuild
+   the concept index, verify its task and filters, then create and verify the
+   Source Version. Do not infer production deployment from local artifacts.
+
+### Guarded mapping rekey
+
+`ocl_omop_rekey_mappings.py` prepares offline before/after files, separate
+normal and orphan bundles, a review CSV, and an audit. Independently verify that
+all input snapshots are complete and fresh and use an empty output directory.
+Review target identities and collisions before any manual import; the audit
+explicitly does not prove target resolution. The current script is guarded by
+expected counts of 67 new-source and 31 legacy mappings; these are snapshot
+checks, not general totals. A mismatch stops the run and needs investigation.
+
+The separate legacy migration script uses numeric targets and is not established
+as compatible with the newer code-keyed Source. Do not use it for this migration
+without maintainer review and end-to-end verification.
+
 ## Collections and references
+
+`ocl_mapper_bridge_collection.py` creates an offline private CIEL Value Set
+bundle for the Mapper bridge, with versionless references to RxNorm and the
+OMOP RxNorm Extension and a collection-version entry. Its `.json` output is
+JSONL, not a JSON array. Versionless references follow HEAD rather than pinning
+source versions; review the intended collection version and expansion before
+manual import or use. See [the Mapper bridge guide](../features/tools/ocl-mapper-rxnorm-bridge.md).
 
 | Script | Purpose |
 | --- | --- |

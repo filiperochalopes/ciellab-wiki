@@ -86,6 +86,14 @@ Credential names are not completely uniform in this historical toolbox:
 8. verify OCL and CIEL Lab projections.
 9. Repeat the reviewed process for production.
 
+## RxNorm Extension
+
+The separate [RxNorm Extension workflow](ocl-workflows.md#rxnorm-extension-subset)
+prepares a CIEL-related subset from Athena and a CIEL export, plus reviewable
+source and Mapper collection artifacts. It does not require the OMOP Standard
+PostgreSQL staging database. Review the artifacts and source permissions before
+any manual import.
+
 ## OMOP Standard and IMO comparison
 
 The OMOP workflow stages an OHDSI Athena vocabulary in a disposable local

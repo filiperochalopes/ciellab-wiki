@@ -79,6 +79,15 @@ The optional CIELAdmin branch is never started automatically. A successful
 release therefore does not imply that the legacy CIELAdmin database was
 overwritten.
 
+## Post-release search verification
+
+After confirming the new OCL version, compare its active concept and mapping
+counts with global search restricted to CIEL and inspect representative
+identifiers for duplicate older-version results. A mismatch warrants investigation
+of the OCL index, not an immediate repeat release. [Issue #684](https://github.com/OpenConceptLab/ocl_online/issues/684)
+reports that one production drift was repaired, but prevention and automated
+detection remained unverified for a subsequent CIEL release.
+
 ## Artifacts
 
 Background tasks can produce:

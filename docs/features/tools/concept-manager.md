@@ -43,6 +43,14 @@ Review these elements together:
 An apparently missing mapping may be represented in another direction or under
 a different source identifier. Inspect the complete mapping context.
 
+In the current code, `DCM` and `DICOM Controlled Terminology` resolve to
+`NEMA:DCM`; the `RxNORM` label resolves to `NLM:RxNorm`. Both `OMOP RxNORM
+Extension` and the legacy `OMOP-RxNORM` label resolve to
+`OHDSI:OMOP-RxNorm-Extension`. Verify the source and code before saving.
+Explicit old source URLs are not automatically rewritten, and resolving a label
+to a new source does not migrate existing mappings. Check the deployed version
+and the migration status in [issue #3040](https://github.com/OpenConceptLab/ocl_issues/issues/3040).
+
 ### Open a Concept Quick View
 
 Use **Option/Alt+click** on a `CIEL:<id>` reference to inspect a concept without
@@ -143,9 +151,10 @@ uses your personal OCL token, so configure it in **Settings** first.
    the reason `Dupe of <target ID>`, that the target remains active, and that
    the `REPLACED BY` mapping points from source to target.
 
-The operation never overwrites names already on the target. Active source names
-not already present are copied as non-preferred synonyms; fully specified names
-are also converted to synonyms. A source that is already retired, a retired
+The operation never overwrites names already on the target. Eligible active source
+names not already present are proposed as non-preferred synonyms; fully specified
+names are also converted to synonyms. OCL may reject individual names, which are
+reported as skipped. A source that is already retired, a retired
 target, an existing equivalent `REPLACED BY` mapping, or a concurrent merge is
 rejected before the background job begins.
 
@@ -157,10 +166,11 @@ where possible. A `rollback_failed` result means that manual review is required
 before any further merge attempt. In particular, preserve the error details and
 confirm names, mappings, and retirement state in OCL before proceeding.
 
-If OCL rejects every name that the merge would copy, CIEL Lab aborts before
-creating the `REPLACED BY` mapping or retiring the source. Correct the rejected
-names or choose a suitable target, then create a new preview. A single rejected
-name can be skipped only when other planned copied names succeed.
+In the current code, if OCL rejects every name proposed for copying, those names
+are reported as skipped and the merge can still create the `REPLACED BY` mapping
+and retire the source. The retired source retains its names. Review the skipped
+names and verify both concepts and their mapping in OCL; do not assume the target
+received every name. Check the deployed version before relying on this behavior.
 
 ## Worklists and bulk edits
 

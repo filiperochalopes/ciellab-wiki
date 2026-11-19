@@ -77,6 +77,14 @@ This behavior was reproduced for the CIEL-to-ICD-11-WHO migration and is
 tracked by [issue #2990](https://github.com/OpenConceptLab/ocl_issues/issues/2990)
 for better warnings and the remaining repository-version question.
 
+## RxNorm source migration
+
+CIEL Lab code resolves current RxNorm and OMOP RxNorm Extension labels to their
+new OCL sources, but that does not rewrite explicitly stored old URLs or prove
+that existing mappings were migrated. Deployment, production mapping state,
+missing targets, and retired mappings require separate verification and curator
+review. See [issue #3040](https://github.com/OpenConceptLab/ocl_issues/issues/3040).
+
 ## Concept merge compensation
 
 A merge spans several OCL writes, so it cannot be made atomic across requests.

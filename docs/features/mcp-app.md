@@ -27,8 +27,23 @@ into a prompt.
 
 ## Approval boundary
 
-MCP prepares a preview only. A signed-in user reviews and commits the final
-OCL change through CIEL Lab; the MCP client cannot silently persist it.
+MCP can stage a proposal for review, but cannot silently apply it to OCL. A
+signed-in user reviews the rows and submits the final changes through the
+CIEL Lab widget; submitting queues the selected edits for background processing.
+
+## Propose names and descriptions
+
+The bulk-edit tool can propose **Insert**, **Update**, or **Retire** operations
+for names and descriptions. Each proposal contains only one resource type and
+one operation; use separate proposals for, for example, updating names and
+retiring descriptions. Review the current concept and proposed values before
+sending each page of edits.
+
+For an update or retirement, identify the existing active name or description
+from the current concept. A target rule must resolve to exactly one active item;
+zero or multiple matches reject that item. Retirement requires a reason. Inspect
+per-item outcomes after submission and confirm the resulting state in OCL.
+See [issue #2792](https://github.com/OpenConceptLab/ocl_issues/issues/2792).
 
 ## Search and review mappings
 
