@@ -20,6 +20,7 @@ threads, and Slack conversations.
 | Learn the interface | [Product tour](getting-started/product-tour.md) |
 | Find and update a concept | [Concept Manager](features/tools/concept-manager.md) |
 | Find an external terminology code | [Code Search](features/tools/code-search.md) |
+| Test medication mapping in OCL Mapper | [CIEL Bridge to RxNorm and OMOP](features/tools/ocl-mapper-rxnorm-bridge.md) |
 | Check the current CIEL HEAD | [Quality assurance](features/quality-assurance/overview.md) |
 | Resume a long QA review | [Bulk Validation](features/quality-assurance/bulk-validation.md) |
 | Prepare a release | [Release workflow](features/release-workflow.md) |

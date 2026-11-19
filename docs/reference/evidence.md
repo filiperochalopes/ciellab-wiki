@@ -69,6 +69,7 @@ permalinks, attachment URLs, personal context, or credentials.
 
 ## Issue cross-references
 
+- [OCL Mapper #665 — CIEL Bridge to RxNorm clinical drugs](https://github.com/OpenConceptLab/ocl_online/issues/665)
 - [#2609 — CIEL Lab wiki](https://github.com/OpenConceptLab/ocl_issues/issues/2609)
 - [#2401 — QA rule work referenced by the implementation](https://github.com/OpenConceptLab/ocl_issues/issues/2401)
 - [#2389 — semantic matching and specificity](https://github.com/OpenConceptLab/ocl_issues/issues/2389)

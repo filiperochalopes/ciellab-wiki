@@ -100,6 +100,7 @@ nav:
           - Concept Manager: features/tools/concept-manager.md
           - Code Search: features/tools/code-search.md
           - Translation: features/tools/translation.md
+          - OCL Mapper RxNorm bridge: features/tools/ocl-mapper-rxnorm-bridge.md
       - Release workflow: features/release-workflow.md
       - MCP App: features/mcp-app.md
       - Settings and access: features/settings.md
